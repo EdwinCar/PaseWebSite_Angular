@@ -1,0 +1,90 @@
+<div class="card">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <small class="font-weight-bold text-muted">Registro de empresas</small>
+  </div>
+  <div class="card-body">
+    <form name="form" #frm="ngForm">
+      <div class="d-flex justify-content-end">
+        <mat-slide-toggle color="warn" checked="true" [(ngModel)]="company.swActividad">Activo</mat-slide-toggle>
+      </div>
+      <hr class="mt-3 mb-3">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="companycode">Código empresa</label>
+          <input type="text" name="companycode" #companycode="ngModel" class="form-control" placeholder=""
+            [(ngModel)]="company.codigoEmpresa">
+        </div>
+        <div class="form-group col-md-5">
+          <label for="companysocial">Razón social</label>
+          <input type="text" name="companysocial" #companysocial="ngModel" class="form-control" placeholder=""
+            [(ngModel)]="company.razonSocial">
+        </div>
+        <div class="form-group col-md-5">
+          <label for="companycomercial">Nombre comercial</label>
+          <input type="text" name="companycomercial" #companycomercial="ngModel" class="form-control" placeholder=""
+            [(ngModel)]="company.razonComercial">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="companyrubro">Rubro</label>
+          <select name="companyrubro" #companyrubro="ngModel" class="form-control" [(ngModel)]="company.giroNegocio">
+            <option selected>Seleccione</option>
+            <option *ngFor="let item of parameters" value={{item.value}}>{{item.value}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="companynit">NIT</label>
+          <input type="text" name="companynit" #companynit="ngModel" class="form-control" [(ngModel)]="company.ruc">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="companytelefono">Teléfono</label>
+          <input type="text" name="companytelefono" #companytelefono="ngModel" class="form-control"
+            [(ngModel)]="company.telefono">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="companyfax">Fax</label>
+          <input type="text" name="companyfax" #companyfax="ngModel" class="form-control" [(ngModel)]="company.fax">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="companyconciliacion">Tipo conciliación</label>
+          <select id="companyconciliacion" class="form-control">
+            <option selected>Seleccione</option>
+            <option *ngFor="let item of conciliations" value="{{item.value}}">{{item.value}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="companydireccion">Dirección</label>
+          <input type="text" name="companydireccion" #companydireccion="ngModel" class="form-control"
+            [(ngModel)]="company.direccion">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="companyemail">Email empresa</label>
+          <input type="text" name="companyemail" #companyemail="ngModel" class="form-control"
+            [(ngModel)]="company.emailEmpresa">
+        </div>
+      </div>
+      <hr class="mt-3 mb-3">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="companynombrecontacto">Nombre Contacto</label>
+          <input type="text" name="companynombrecontacto" #companynombrecontacto="ngModel" class="form-control"
+            [(ngModel)]="company.nombreContacto">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="companyemailcontacto">Email Contacto</label>
+          <input type="text" name="companyemailcontacto" #companyemailcontacto="ngModel" class="form-control"
+            [(ngModel)]="company.emailContacto">
+        </div>
+      </div>
+
+    </form>
+    <hr class="mt-3 mb-3">
+    <div class="form-row d-flex justify-content-end my-3">
+      <button mat-raised-button class="mx-3">Cancelar</button>
+      <button mat-raised-button color="warn" (click)="onRegister()">Registrar</button>
+    </div>
+  </div>
+</div>

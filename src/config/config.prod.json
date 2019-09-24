@@ -1,0 +1,5 @@
+{
+  "BaseUrl": "https://localhost:44304/api/",
+  "AuthUri": "account/validate",
+  "BusinessMembership": "membership/business/search"
+}

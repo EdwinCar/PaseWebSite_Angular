@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+* {
+  font-family: "Flexo-Regular";
+}
+
+@font-face {
+  font-family: 'Flexo-Bold';
+  src: url('../src/assets/fonts/Flexo-Bold.eot?#iefix') format('embedded-opentype'), url('../src/assets/fonts/Flexo-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Flexo-BoldIt';
+  src: url('../src/assets/fonts/Flexo-BoldIt.eot?#iefix') format('embedded-opentype'), url('../src/assets/fonts/Flexo-BoldIt.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Flexo-It';
+  src: url('../src/assets/fonts/Flexo-It.eot?#iefix') format('embedded-opentype'), url('../src/assets/fonts/Flexo-It.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Flexo-Regular';
+  src: url('../src/assets/fonts/Flexo-Regular.eot?#iefix') format('embedded-opentype'), url('../src/assets/fonts/Flexo-Regular.ttf') format('truetype');
+}
+
+.a-cursor{
+  cursor: pointer;
+}

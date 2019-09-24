@@ -1,0 +1,114 @@
+.breadcrumb {
+  /* background: linear-gradient(270deg, #014B8E 0%, #337ab7 49.63%, #014B8E 100%); */
+  border-radius: 0;
+  text-align: center;
+  counter-reset: flag;
+  border-bottom:0.3px solid #337ab7;
+}
+
+.breadcrumb-item{
+  color: #014B8E;
+  text-decoration: none;
+}
+
+.breadcrumb-item:first-child {
+  padding-left: 46px;
+  border-radius: 5px 0 0 5px;
+}
+
+
+
+/* .breadcrumb-item:first-child::before {
+  left: 140px;
+  background: #337ab7;
+} */
+
+
+/* :root{
+  --breadcrumb-theme-1: #014B8E;
+  --breadcrumb-theme-2: #337ab7;
+  --breadcrumb-theme-3: #FF4F10;
+} */
+
+/* .breadcrumbb{
+  text-align: center;
+
+  overflow: hidden;
+  border-radius: 1px;
+  counter-reset: flag;
+} */
+
+/* .breadcrumb-step{
+  text-decoration: none;
+  outline: none;
+  display: block;
+  float: left;
+  font-size: 12px;
+  line-height: 36px;
+  padding: 0 10px 0 60px;
+  position: relative;
+  background: #337ab7;
+  color: #014B8E;
+  transition: background 0.5s;
+} */
+
+/* .breadcrumb-step:first-child {
+  padding-left: 46px;
+  border-radius: 5px 0 0 5px;
+}
+.breadcrumb-step:first-child::before {
+  left: 14px;
+}
+.breadcrumb-step:last-child {
+  border-radius: 0 5px 5px 0;
+  padding-right: 20px;
+}
+.breadcrumb-step:last-child::after {
+  content: none;
+} */
+
+/* .breadcrumb-step::before {
+  content: counter(flag);
+  counter-increment: flag;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: 8px 0;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  font-weight: bold;
+  background: #337ab7;
+  box-shadow: 0 0 0 1px #014B8E;
+} */
+
+/* .breadcrumb-step::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  transform: scale(0.707) rotate(45deg);
+  z-index: 1;
+  border-radius: 0 5px 0 50px;
+  background: #337ab7;
+  transition: background 0.5s;
+  box-shadow: 2px -2px 0 2px #FF4F10;
+} */
+
+/* .breadcrumb-step:hover,
+.breadcrumb-step-active,
+.breadcrumb-step:hover::after,
+.breadcrumb-step-active::after {
+  background: #014B8E;
+}
+.breadcrumb-step:hover,
+.breadcrumb-step-active {
+  color: #337ab7;
+}
+.breadcrumb-step:hover::before,
+.breadcrumb-step-active::before {
+  color: #014B8E;
+} */

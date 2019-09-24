@@ -1,0 +1,58 @@
+.color-primary{
+  border-left:.25rem solid #014B8E!important
+}
+
+.color-secondary{
+  border-left:.25rem solid #858796!important
+}
+
+.color-accent{
+  border-left:.25rem solid #FF4F10!important
+}
+
+.color-success{
+  border-left:.25rem solid #1cc88a!important
+}
+
+.color-info {
+  border-left:.25rem solid #36b9cc!important
+}
+
+.color-warning{
+  border-left:.25rem solid #f6c23e!important
+}
+
+.color-danger{
+  border-left:.25rem solid #e74a3b!important
+}
+
+.color-light{
+  border-left:.25rem solid #f8f9fc!important
+}
+
+.card-body{
+  -webkit-box-flex:1;
+  -ms-flex:1 1 auto;
+  flex:1 1 auto;
+  padding:1.25rem
+}
+
+.no-gutters{
+  margin-right:0;
+  margin-left:0
+}
+
+.no-gutters>.col,.no-gutters>[class*=col-]{
+  padding-right:0;
+  padding-left:0
+}
+
+.align-items-center{
+  -webkit-box-align:center!important;
+  -ms-flex-align:center!important;
+  align-items:center!important
+}
+
+.font-weight-bold{
+  font-weight:700!important
+}

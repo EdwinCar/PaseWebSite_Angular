@@ -1,0 +1,41 @@
+.container-main{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-section{
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* .container-main {
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-section {
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+}
+
+.container-horizontal {
+  display: flex;
+  flex-direction: row;
+} */
+
+.page-content {
+  background-color: #f8f9fc;
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    min-width: 0;
+    width: 100%;
+  }
+}
+

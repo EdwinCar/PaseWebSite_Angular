@@ -1,0 +1,34 @@
+<nav class="navbar navbar-light mb-0 topbar shadow">
+  <a class="navbar-brand" href="#">
+    <i class="fas fa-bars"></i>
+    Sistema de administración PASE
+  </a>
+
+  <ul class="navbar-nav ml-auto list-group-horizontal">
+    <li class="nav-item dropdown mo-arrow mx-1">
+      <a href="#" class="nav-link dropdown-toggle" id="alertsDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell"></i>
+        <span class="badge badge-danger badge-counter rounded-circle">
+          3
+        </span>
+      </a>
+    </li>
+
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <li class="nav-item dropdown no-arrow mx-1">
+      <a href="#" class="nav-link dropdown-toggle " id="profileDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <small class="text-white mx-3 user-head">{{userCurrent.unique_name}}</small>
+        <img class="img-profile rounded-circle" src="../../../../../assets/img/profile.png">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="profileDropdown">
+        <a class="dropdown-item a-cursor" (click)="ngLogOut()">
+          <i class="fas fa-sign-out-alt"></i>
+          Cerrar sesión
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>

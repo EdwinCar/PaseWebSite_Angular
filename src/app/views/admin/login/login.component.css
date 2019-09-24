@@ -1,0 +1,35 @@
+.btn-login {
+  color: #fff;
+  background-color: #0B259E;
+  border-color: #0B259E;
+  border-radius: 4rem;
+}
+
+.btn-login:hover {
+  color: #fff;
+  background-color: #014B8E;
+  border-color: #014B8E;
+}
+
+.btn-login:disabled {
+  background-color: #0B259E;
+  border-color: #0B259E;
+}
+
+.card {
+  background-color: #FF4F10;
+  border-color: #fff;
+  color: #fff;
+}
+
+.form-control-user {
+  font-size: 0.9rem;
+  border-radius: 3rem;
+  padding: 1.1rem 0.5rem;
+}
+
+.alert-danger {
+  border-left: 3px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
