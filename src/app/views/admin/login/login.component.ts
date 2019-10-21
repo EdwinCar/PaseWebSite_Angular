@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    var str = sessionStorage.getItem('currentUser');
     if (sessionStorage.getItem('currentUser')) {
       this.authService.logout();
     }
@@ -38,7 +37,8 @@ export class LoginComponent implements OnInit {
         if (result.state === 0) {
           const current = {
             user: this.authRequest.UserName,
-            tokens: result.data
+            tokens: result.data.token,
+            refresh: result.data.refreshToken
           };
           this.state = false;
           this.router.navigate(['/']);

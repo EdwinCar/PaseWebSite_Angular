@@ -29,17 +29,21 @@ export class BusinessService {
   }
 
   addCompany(company: Company): Observable<IResponse> {
-    return this.client.post<IResponse>(this.baseUrl + 'business/insert', company);
+    return this.client.post<IResponse>(this.baseUrl + 'membership/business/insert', company);
   }
 
   updateCompany(company: Company): Observable<IResponse> {
-    return this.client.post<IResponse>(this.baseUrl + 'business/update', company);
+    return this.client.post<IResponse>(this.baseUrl + 'membership/business/update', company);
   }
 
   deleteCompany(companyCode: string): Observable<IResponse> {
     const company = {
       CompanyCode: companyCode
     };
-    return this.client.post<IResponse>(this.baseUrl + 'business/delete', company);
+    return this.client.post<IResponse>(this.baseUrl + 'membership/business/delete', company);
+  }
+
+  getAllCompanyServices(): Observable<IResponse> {
+    return this.client.get<IResponse>(this.baseUrl + 'membership/service/search');
   }
 }

@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="card-header py-2 d-flex flex-row align-items-center justify-content-between">
+    <small class="font-weight-bold text-muted">Servicio afiliados</small>
+    <button mat-raised-button color="warn" (click)="ngCreateService()">
+      <i class="far fa-building fa-lg"></i>
+      Crear Nuevo Servicio
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row example-container">
+        <div class="col">
+          <mat-form-field class="p-0">
+            <mat-select placeholder="Seleccione un rubro" (selectionChange)="selectedCategory($event)">
+              <mat-option *ngFor="let category of categories" [value]="category"> {{ category.Name }} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-select placeholder="Seleccione una empresa">
+              <mat-option *ngFor="let company of companies" [value]="company"> {{ company.razonSocial }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mat-elevation-z3 mt-3">
+  <table mat-table [dataSource]="dataContext" matSort>
+    <ng-container matColumnDef="codigoEmpresa">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Codigo Empresa</th>
+      <td mat-cell *matCellDef="let element"> {{element.codigoEmpresa}} </td>
+    </ng-container>
+    <ng-container matColumnDef="razonSocial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Razon Social</th>
+      <td mat-cell *matCellDef="let element"> {{element.razonSocial}} </td>
+    </ng-container>
+    <ng-container matColumnDef="codServicio">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Codigo Servicio</th>
+      <td mat-cell *matCellDef="let element"> {{element.codServicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombreServicio">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Servicio</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreServicio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rubro">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Rubro</th>
+      <td mat-cell *matCellDef="let element"> {{element.rubro}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tipoPago">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Tipo Pago</th>
+      <td mat-cell *matCellDef="let element"> {{element.tipoPago}} </td>
+    </ng-container>
+    <ng-container matColumnDef="modoValidacion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Validacion</th>
+      <td mat-cell *matCellDef="let element"> {{element.modoValidacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cuentaRecudadora">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Cuenta Recaudadora</th>
+      <td mat-cell *matCellDef="let element"> {{element.cuentaRecudadora}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cuentaMoneda">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Moneda</th>
+      <td mat-cell *matCellDef="let element"> {{element.cuentaMoneda}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Accion</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="row">
+          <button mat-icon-button color="link" (click)="onDialogModify(element)">
+            <i class="far fa-edit"></i>
+          </button>
+          <button mat-icon-button color="warn" (click)="onDialogDelete(element.codigoEmpresa)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

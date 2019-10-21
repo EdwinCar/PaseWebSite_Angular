@@ -19,7 +19,9 @@ const routes: Routes = [
     component: BasePageComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'membership', loadChildren: './views/membership/membership.module#MembershipModule' }
+      { path: 'membership', loadChildren: './views/membership/membership.module#MembershipModule' },
+      { path: 'reporting', loadChildren: './views/reporting/reporting.module#ReportingModule' },
+      { path: 'parametrization', loadChildren: './views/parametrization/parametrization.module#ParametrizationModule'}
     ]
   },
   {

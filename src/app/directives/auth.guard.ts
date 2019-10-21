@@ -14,14 +14,14 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (sessionStorage.getItem('currentUser')) {
-      this.IsTokenExpired();
+      this.tokenExpired();
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
 
-  private IsTokenExpired() {
+  private tokenExpired() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     if (!currentUser || currentUser == null) {
       this.authService.logout();
@@ -31,6 +31,8 @@ export class AuthGuard implements CanActivate {
     const jwt = token.split('.')[1];
     const base64 = jwt.replace('-', '+').replace('_', '/');
     const data = JSON.parse(window.atob(base64));
+    console.log('Expiration: ', (Date.now() / 1000));
+    console.log('Expiration: ', data.exp);
     if ((Date.now() / 1000) > data.exp) {
       this.authService.logout();
     }

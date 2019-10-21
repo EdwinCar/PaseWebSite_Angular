@@ -1,3 +1,5 @@
+import { ServiceCustomer } from './service-customer';
+
 export class Company {
   codigoEmpresa: string;
   ruc: string;
@@ -13,7 +15,8 @@ export class Company {
   usuarioBanco: string;
   nombreContacto: string;
   swSPE: string;
-  swActividad: string;
+  swActividad: boolean;
   swAudiCre: string;
   swAudiMod: string;
+  Services: ServiceCustomer[] = [];
 }

@@ -1,0 +1,29 @@
+export class ServiceCustomer {
+  CodigoRecaudador: string;
+  CodigoEmpresa: string;
+  CodigoServicio: string;
+  CodigoRubro: string;
+  NombreServicio: string;
+  DescripcionRubro: string;
+  DescripcionServicio: string;
+  MonedaServicio: string;
+  ValidacionDatos: string;
+  FlgModPago: string;
+  IndicadorCargo: string;
+  PeriodoCargo: number;
+  PeriodoAbono: number;
+  IndicadorAbono: boolean;
+  FlgPagoMultiple: string;
+  FlgRubroPrincipal: boolean;
+  FlgFacturacion: boolean;
+  FlgCargoLinea: string;
+  FlgAbonoLinea: string;
+  FlgOnline: boolean;
+  FlgSRE: string;
+  FechaVigenciaDesde: string;
+  FechaVigenciaHasta: string;
+  UsuarioBanco: string;
+  SwActividad: boolean;
+  SwAudiCre: string;
+  SwAudiMod: string;
+}

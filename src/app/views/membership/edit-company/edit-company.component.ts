@@ -1,22 +1,29 @@
-import { OperationResponse } from './../../../services/shared/models/responses/operation-response';
-import { Company } from './../../../services/shared/models/company';
-import { Component, OnInit } from '@angular/core';
-import { BusinessService } from 'src/app/services/membership/business.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Company } from 'src/app/services/shared/models/company';
 import { Parameter } from 'src/app/services/shared/models/parameter';
+import { OperationResponse } from 'src/app/services/shared/models/responses/operation-response';
+import { BusinessService } from 'src/app/services/membership/business.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-create-company',
-  templateUrl: './create-company.component.html',
-  styleUrls: ['./create-company.component.css']
+  selector: 'app-edit-company',
+  templateUrl: './edit-company.component.html',
+  styleUrls: ['./edit-company.component.css']
 })
-export class CreateCompanyComponent implements OnInit {
+export class EditCompanyComponent implements OnInit {
   company: Company = new Company();
   parameters: Array<Parameter> = [];
   conciliations: Array<Parameter> = [];
   operation: OperationResponse = new OperationResponse();
-  activeLabel = 'Habilitar';
-  constructor(private business: BusinessService) { }
+  active = 'Habilitar';
+
+  swith = false;
+
+  // tslint:disable-next-line: max-line-length
+  constructor(private business: BusinessService, public dialogRef: MatDialogRef<EditCompanyComponent>, @Inject(MAT_DIALOG_DATA) public data: Company) {
+    this.company = data;
+  }
 
   ngOnInit() {
     this.getCompanies();
@@ -53,10 +60,8 @@ export class CreateCompanyComponent implements OnInit {
     );
   }
 
-  onRegister() {
-    var code = this.parameters.filter(x => this.company.giroNegocio === x.value);
-
-    this.business.addCompany(this.company).subscribe(
+  onModify() {
+    this.business.updateCompany(this.company).subscribe(
       result => {
         if (result.state === 0) {
           this.operation = result.data;
@@ -70,11 +75,15 @@ export class CreateCompanyComponent implements OnInit {
     );
   }
 
+  onClose() {
+    this.dialogRef.close();
+  }
+
   onToggle(event: MatSlideToggleChange) {
     if (event.checked) {
-      this.activeLabel = 'Habilitar';
+      this.active = 'Habilitar';
     } else {
-      this.activeLabel = 'Deshabilitar';
+      this.active = 'Deshabilitar';
     }
   }
 }

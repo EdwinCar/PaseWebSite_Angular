@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <small class="font-weight-bold text-muted">Mantenimiento Tablas</small>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fab fa-searchengin"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control" placeholder="Buscar" (keyup)="onFilterTable($event.target.value)">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <button mat-raised-button color="warn" (click)="ngCreateBusiness()">
+          <i class="far fa-building fa-lg"></i>
+          Crear empresa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

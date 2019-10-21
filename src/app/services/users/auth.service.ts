@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public token: string;
+  private token: string;
+  private currentUser: any;
 
   constructor(private client: HttpClient, private route: Router, private config: AppConfigService) {
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.tokens;
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
   }
 
   login(authRequest: AuthRequest): Observable<IResponse> {
@@ -28,12 +28,36 @@ export class AuthService {
     this.route.navigate(['/login']);
   }
 
-  updateToken(): Observable<boolean> {
-    console.log('UpdateToken: ', 'Send');
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    const refresh = new URLSearchParams();
-    refresh.set('refresh_token', currentUser.tokens);
+  updateToken(): Observable<IResponse> {
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const refresh = {
+      token: this.currentUser.tokens,
+      refreshToken: this.currentUser.refresh
+    };
+    return this.client.post<IResponse>(this.config.getConfig('BaseUrl') + 'account/refresh', refresh).pipe(
+      map(
+        result => {
+          console.log('RefreshToken: ', result);
+          if (result.state === 0) {
+            this.currentUser.tokens = result.data.token;
+            this.currentUser.refresh = result.data.refreshToken;
+            sessionStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+          } else {
+            console.log('RefreshTokenE', result.message);
+          }
+          return result;
+        }
+      )
+    );
+  }
 
-    return this.client.post<boolean>(this.config.getConfig('BaseUrl') + 'account/refresh', refresh);
+  getCurrentUser(): any {
+    return this.currentUser === null ? JSON.parse(sessionStorage.getItem('currentUser')) : this.currentUser;
+  }
+
+  getAuthToken(): string {
+    this.currentUser = this.currentUser === null ? JSON.parse(sessionStorage.getItem('currentUser')) : this.currentUser;
+    this.token = this.currentUser && this.currentUser.tokens;
+    return this.token;
   }
 }

@@ -16,7 +16,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-head">Afiliación</h6>
         <a class="collapse-item a-cursor" (click)="ngRouterLink()" >Cuentas asociadas</a>
-        <a class="collapse-item" [routerLink]="['/membership/business']" >Empresas recaudadoras</a>
+        <a class="collapse-item" [routerLink]="['/membership/services']">Empresas recaudadoras</a>
       </div>
     </div>
   </li>
@@ -29,7 +29,7 @@
     <div class="collapse" id="goReport" aria-labelledby="headReport" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-head">Reportes</h6>
-        <a class="collapse-item" href="#">Transacciones PASE</a>
+        <a class="collapse-item" [routerLink]="['/reporting/transactions']">Transacciones PASE</a>
         <a class="collapse-item" href="#">Pagos realizados PASE</a>
         <a class="collapse-item" href="#">Transacciones PASE a HOST</a>
       </div>
@@ -44,7 +44,7 @@
     <div class="collapse" id="goParameter" aria-labelledby="headParameter" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-head">Parametrización</h6>
-        <a class="collapse-item" href="#">Mantenimiento Tablas</a>
+        <a class="collapse-item" [routerLink]="['/parametrization/maintenance']">Mantenimiento Tablas</a>
         <a class="collapse-item" href="#">Empresas recaudadoras</a>
       </div>
     </div>

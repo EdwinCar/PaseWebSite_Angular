@@ -1,34 +1,61 @@
 <div class="card">
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
     <small class="font-weight-bold text-muted">Empresas afiliadas</small>
-    <button mat-raised-button color="warn" (click)="ngCreateBusiness()">
-      <i class="far fa-building fa-lg"></i>
-      Crear empresa
-    </button>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fab fa-searchengin"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control" placeholder="Buscar" (keyup)="onFilterTable($event.target.value)">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <button mat-raised-button color="warn" (click)="ngCreateBusiness()">
+          <i class="far fa-building fa-lg"></i>
+          Crear empresa
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataContext">
+<div class="mat-elevation-z3">
+  <table mat-table [dataSource]="dataContext" matSort>
     <ng-container matColumnDef="codigoEmpresa">
-      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Codigo Empresa</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Codigo Empresa</th>
       <td mat-cell *matCellDef="let element"> {{element.codigoEmpresa}} </td>
     </ng-container>
     <ng-container matColumnDef="razonSocial">
-      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Razon Social</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Razon Social</th>
       <td mat-cell *matCellDef="let element"> {{element.razonSocial}} </td>
     </ng-container>
     <ng-container matColumnDef="ruc">
-      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Ruc</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Ruc</th>
       <td mat-cell *matCellDef="let element"> {{element.ruc}} </td>
     </ng-container>
     <ng-container matColumnDef="giroNegocio">
-      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Categoria</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Categoria</th>
       <td mat-cell *matCellDef="let element"> {{element.giroNegocio}} </td>
     </ng-container>
     <ng-container matColumnDef="swActividad">
-      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Estado</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold">Estado</th>
       <td mat-cell *matCellDef="let element"> {{element.swActividad}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="font-weight-bold">Accion</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="row">
+          <button mat-icon-button color="link" (click)="onDialogModify(element)"  aria-label="Example icon-button with a heart icon">
+            <i class="far fa-edit"></i>
+          </button>
+          <button mat-icon-button color="warn" (click)="onDialogDelete(element.codigoEmpresa)"  aria-label="Example icon-button with a heart icon">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -36,56 +63,3 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-
-
-
-
-
-
-
-
-<!-- <div class="card">
-  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <small class="font-weight-bold text-muted">Registro de empresas</small>
-  </div>
-  <div class="card-body">
-    <form>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">
-            <i class="fa fa-mobile-alt"></i>
-        </span>
-        <input id="number-device" autofocus type="text" class="form-control" placeholder="Ingrese número de Agente" aria-label="Ingrese número de Agente" aria-describedby="basic-addon2" maxlength="8">
-        <div class="input-group-append">
-            <button id="button-search-device" class="btn btn-dashboard" type="button"><i class="fas fa-search"></i>  Buscar   </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div> -->
-
-
-
-<!-- <div class="card  mb-4">
-
-  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-    <div class="dropdown no-arrow">
-      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-        <div class="dropdown-header">Dropdown Header:</div>
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-body">
-    <div class="chart-area">
-      <canvas id="myAreaChart"></canvas>
-    </div>
-  </div>
-</div> -->
